@@ -10,6 +10,14 @@ Department of Electrical and Informatics Engineering, Universitas Gadjah Mada
 
 ---
 
+## 🎬 Demonstration
+
+Here's a quick demonstration of the prediction process and GUI in action:
+
+![Heart Failure Prediction Demo](images/demo.gif)
+
+---
+
 ## 📖 Project Summary
 
 This project presents a comparative analysis of three machine learning models—**Decision Tree**, **Random Forest**, and **Neural Network**—for predicting patient survival outcomes in cases of heart failure. The study was motivated by the global burden of heart disease and the clinical need for accurate, accessible, and data-efficient prediction tools.
