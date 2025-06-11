@@ -1,106 +1,123 @@
-# 🫀 Heart Failure Detection with Neural Networks
+# 🫀 Heart Failure Survival Prediction using Machine Learning
 
-This project is a machine learning solution aimed at predicting heart failure events using clinical data. It uses a neural network model to analyze patient features and classify whether a heart failure event is likely to occur. The ultimate goal is to support healthcare professionals with early and accurate predictions.
+### A Comparative Study of Decision Tree, Random Forest, and Neural Network Models
 
----
+**Authors**:  
+- Thoriq Putra Belligan  
+- Daffa Pratama Putra Riyantoso  
 
-## 🔍 Project Objective
-
-Build and train a neural network to predict the binary outcome (`DEATH_EVENT`) of patients based on various clinical features. This classification model can help in early diagnosis and treatment planning.
-
----
-
-## 🧠 Dataset Overview
-
-The dataset consists of **299 patient records** with 13 features each. The target variable is `DEATH_EVENT` (1 = event occurred, 0 = survived).
-
-### Selected Features:
-- Age
-- Anaemia
-- Creatinine phosphokinase
-- Diabetes
-- Ejection fraction
-- High blood pressure
-- Platelets
-- Serum creatinine
-- Serum sodium
-- Sex
-- Smoking
-
-### Dropped:
-- `time` (not useful for prediction)
+Department of Electrical and Informatics Engineering, Universitas Gadjah Mada
 
 ---
 
-## 🏗️ Model Architecture
+## 📖 Project Summary
 
-The neural network has the following layers:
+This project presents a comparative analysis of three machine learning models—**Decision Tree**, **Random Forest**, and **Neural Network**—for predicting patient survival outcomes in cases of heart failure. The study was motivated by the global burden of heart disease and the clinical need for accurate, accessible, and data-efficient prediction tools.
 
-- Input layer with 11 standardized features
-- Hidden layers with:
-  - ReLU activation
-  - Batch Normalization
-  - Dropout (for regularization)
-  - L2 Regularization
-- Output layer with sigmoid activation (binary output)
-
-### Training Configuration:
-- Optimizer: Adam
-- Loss: Binary Crossentropy
-- Metrics: Accuracy and AUC
-- Technique: Early stopping based on validation loss
+By utilizing only four routinely collected clinical features, this research demonstrates the feasibility of deploying predictive models even in settings with limited patient data.
 
 ---
 
-## 📊 Model Evaluation
+## 🧪 Clinical Features Used
 
-The model was evaluated using:
-- Accuracy on test data
-- AUC (Area Under the Curve)
-- Classification report
-- Confusion matrix
-- Training and validation curves for accuracy and loss
+The models were trained using a subset of the most predictive variables:
 
----
+- **Serum Creatinine**
+- **Ejection Fraction**
+- **Age**
+- **Serum Sodium**
 
-## 📁 Output Files
-
-- `heart_failure_nn_model.h5` – Trained model saved in HDF5 format.
-- `scaler.save` – StandardScaler object saved with Joblib for reuse in inference.
-
-These can be used later for real-time predictions or integration into applications.
+These were selected based on a correlation-based feature selection process, emphasizing a minimal-feature strategy.
 
 ---
 
-## 📦 Libraries Used
+## 📷 Conceptual Workflow
 
-- TensorFlow / Keras
-- Scikit-learn
-- Pandas
-- NumPy
-- Matplotlib
-- Joblib
+The figure below illustrates the overall workflow, from data preprocessing to model evaluation:
+
+![Conceptual Workflow](images/conceptual%20figure.png)
 
 ---
 
-## 📚 References
+## 🧠 Machine Learning Models
 
-- [Heart Failure Dataset on Kaggle](https://www.kaggle.com/datasets/andrewmvd/heart-failure-clinical-data)
-- [Related Research Paper](https://doi.org/10.1016/j.jbi.2020.103369)
+The study implemented and evaluated the following models:
+
+1. **Decision Tree**  
+   Simple and interpretable, but limited in handling complex patterns.
+
+2. **Random Forest**  
+   An ensemble of decision trees offering better generalization and robustness.
+
+3. **Neural Network (Deep Learning)**  
+   Capable of modeling non-linear relationships with regularization techniques to prevent overfitting.
+
+All models were developed in **Python 3** using libraries such as **Scikit-learn**, **TensorFlow**, and **Keras**.
+
+---
+
+## ⚙️ Methodology Overview
+
+- **Dataset**: 299 patients (public dataset from UCI repository)  
+- **Preprocessing**:
+  - Z-score normalization
+  - Stratified train-test split (70:30)
+  - Class balancing using `class_weight`
+- **Dimensionality Reduction**: PCA for 3D visualization  
+  ![PCA Visualization](images/pca.png)
+- **Evaluation Metrics**:
+  - Accuracy
+  - F1-Score
+  - AUC-ROC
+  - AUC-PR
+  - Confusion Matrix
+
+Each experiment was repeated 10 times with different random seeds for robustness.
 
 ---
 
-## 👤 Author
+## 📊 Results Summary
 
-**Uta** – Student passionate about programming, robotics, and AI-powered healthcare solutions. Constantly exploring, building, and learning.
+| Model           | Accuracy | F1 Score | AUC-ROC | AUC-PR |
+|-----------------|----------|----------|---------|--------|
+| Neural Network  | 78.33%   | 0.6957   | 0.8452  | 0.6701 |
+| Random Forest   | 75.00%   | 0.6316   | 0.8010  | 0.6124 |
+| Decision Tree   | 70.00%   | 0.5714   | 0.7350  | 0.5789 |
+
+The **Neural Network** demonstrated the highest overall performance across all metrics.
+
+---
+
+## 📈 Model Training Performance
+
+The chart below shows the training and validation accuracy/loss over epochs for the neural network model:
+
+![Model Accuracy Over Epochs](images/modelAccuracyOverEpoch.png)
 
 ---
 
-## 🌟 Future Improvements
+## 🖥️ Graphical User Interface (GUI)
 
-- Add model interpretability (e.g., SHAP, LIME)
-- Compare performance with traditional ML models like Random Forest, SVM, or XGBoost
-- Deploy the model into a web or mobile app for practical use
-- Collect more data for further training and evaluation
+To enhance accessibility, a basic GUI was developed to demonstrate the practical use of the trained model:
+
+![Model GUI](images/GUI.png)
 
 ---
+
+## 📁 Files Included
+
+- `training model.ipynb` — Jupyter notebook containing all model development and evaluation steps
+- `README.md` — Project summary and documentation
+- `conceptual figure.png` — Conceptual methodology pipeline
+- `PCA.png` — PCA 3D scatter plot of feature projection
+- `modelAccuracyOverEpoch.png` — Training vs. validation trends
+- `GUI.png` — Screenshot of the user interface for model testing
+
+---
+
+## 🔍 Key Takeaways
+
+- High prediction accuracy can be achieved using only 4 clinical features.
+- The neural network outperformed both tree-based models in discriminative power.
+- This project supports the implementation of lightweight ML models in real-world medical systems, especially where data is scarce.
+
